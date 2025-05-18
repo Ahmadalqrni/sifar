@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سفار - السفر في السعودية</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Cairo:wght@700&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background: linear-gradient(135deg, #fffbe9 0%, #fff5d6 100%);
+        margin: 10% auto;
+        padding: 30px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 900px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .close-modal {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        font-size: 32px;
+        font-weight: bold;
+        color: #b97a00;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .close-modal:hover {
+        background-color: rgba(185, 122, 0, 0.1);
+        color: #8b5a00;
+        transform: rotate(90deg);
+      }
+
+      .modal-content h2 {
+        color: #b97a00;
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 30px;
+        font-family: 'Cairo', sans-serif;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .modal-content h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #b97a00, #8b5a00);
+        border-radius: 3px;
+      }
+
+      .cities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 25px;
+        padding: 20px;
+      }
+
+      .city-option {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #4b2e13;
+        font-family: 'Cairo', sans-serif;
+      }
+
+      .city-option:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(185, 122, 0, 0.2);
+        background: linear-gradient(135deg, #b97a00, #8b5a00);
+        color: white;
+        border-color: transparent;
+      }
+
+      .city-option:active {
+        transform: translateY(-2px);
+      }
+
+      /* Dark mode support */
+      body.dark .modal-content {
+        background: linear-gradient(135deg, #4b2e13 0%, #2c1b0c 100%);
+      }
+
+      body.dark .modal-content h2 {
+        color: #ffd700;
+      }
+
+      body.dark .city-option {
+        background: #2c1b0c;
+        color: #ffd700;
+      }
+
+      body.dark .city-option:hover {
+        background: linear-gradient(135deg, #b97a00, #8b5a00);
+        color: white;
+      }
+
+      body.dark .close-modal {
+        color: #ffd700;
+      }
+
+      body.dark .close-modal:hover {
+        background-color: rgba(255, 215, 0, 0.1);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .modal-content {
+          width: 95%;
+          margin: 5% auto;
+          padding: 20px;
+        }
+        
+        .cities-grid {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 15px;
+          padding: 15px;
+        }
+
+        .city-option {
+          padding: 15px;
+          font-size: 1.1em;
+        }
+
+        .modal-content h2 {
+          font-size: 1.6em;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cities-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+          gap: 10px;
+        }
+
+        .city-option {
+          padding: 12px;
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="header-container">
+        <a href="#" class="header-logo"
+          onclick="location.reload(); return false;">
+          <img src="image/icon website.jpg" alt="شعار سفار" class="logo-img" />
+        </a>
+        <nav class="header-nav">
+          <button class="menu-close" aria-label="إغلاق القائمة">&times;</button>
+          <a href="#experiences" class="header-link">التجارب</a>
+          <a href="#features" class="header-link">المميزات</a>
+          <a href="#technical" class="header-link">التقنية</a>
+          <a href="#contact" class="header-link">تواصل معنا</a>
+          <div class="header-actions">
+            <a href="login.html" class="login-btn" style="text-decoration: none;">تسجيل الدخول</a>
+            <button id="darkModeToggle" class="cta-button" style="margin-right: 1rem;">الوضع الليلي</button>
+          </div>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="القائمة">
+          <span class="menu-icon"></span>
+        </button>
+      </div>
+    </header>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>مرحباً بك في سفار - رحلتك تبدأ هنا</h1>
+        <div class="hero-buttons">
+          <a href="travel-schedule.html" class="cta-button" style="text-decoration: none;">ابدأ التخطيط</a>
+          <button class="cta-button secondary">تحميل التطبيق</button>
+        </div>
+        <div id="citiesModal" class="modal" style="display: none;">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>اختر المدينة</h2>
+            <div class="cities-grid">
+              <div class="city-option" data-city="جدة">جدة</div>
+              <div class="city-option" data-city="الرياض">الرياض</div>
+              <div class="city-option" data-city="مكة المكرمة">مكة المكرمة</div>
+              <div class="city-option" data-city="المدينة المنورة">المدينة المنورة</div>
+              <div class="city-option" data-city="الطائف">الطائف</div>
+              <div class="city-option" data-city="الدمام">الدمام</div>
+              <div class="city-option" data-city="أبها">أبها</div>
+              <div class="city-option" data-city="العلا">العلا</div>
+              <div class="city-option" data-city="تبوك">تبوك</div>
+              <div class="city-option" data-city="الخبر">الخبر</div>
+              <div class="city-option" data-city="ينبع">ينبع</div>
+              <div class="city-option" data-city="حائل">حائل</div>
+              <div class="city-option" data-city="جازان">جازان</div>
+              <div class="city-option" data-city="نجران">نجران</div>
+              <div class="city-option" data-city="عرعر">عرعر</div>
+              <div class="city-option" data-city="الباحة">الباحة</div>
+            </div>
+          </div>
+        </div>
+        <button id="revealCitiesBtn" class="cta-button" style="display:block; margin:2rem auto 1rem auto;">عرض المدن</button>
+        <div id="heroCityGrid" style="display:none;">
+          <div class="city-flex-container">
+            <div class="city-grid" id="cityGridHero">
+              <div class="city-card-container">
+                <div class="city-card" data-city="...">
+                  <img class="city-card-img" src="..." alt="...">
+                  <div class="city-card-title">اسم المدينة</div>
+                </div>
+              </div>
+            </div>
+            <div id="cityDetailsHero" style="min-width:350px; margin-right:2rem;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="about-section">
+      <div class="about-container">
+        <h2>من نحن</h2>
+        <p>
+          سفار هو بوابتك لاستكشاف المملكة العربية السعودية بطريقة حديثة
+          وتفاعلية. نجمع بين المرئيات الجميلة والمحتوى الديناميكي وأحدث التقنيات لمساعدتك على تجربة مدن
+          المملكة وثقافتها ومعالمها كما لم يحدث من قبل.
+        </p>
+      </div>
+    </section>
+    <!-- Experiences Section -->
+    <section id="experiences" class="features-section">
+      <div class="features-container">
+        <h2 class="features-title">التجارب</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🌄</div>
+            <h3>جولات طبيعية</h3>
+            <p>استمتع بجمال الطبيعة السعودية من جبال وصحارى وشواطئ خلابة.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏙️</div>
+            <h3>تجارب حضرية</h3>
+            <p>اكتشف المدن الحديثة، الأسواق التقليدية، والمهرجانات الثقافية.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🍽️</div>
+            <h3>مذاقات محلية</h3>
+            <p>تذوق أشهى الأطباق السعودية الأصيلة في أفضل المطاعم والمقاهي.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎉</div>
+            <h3>فعاليات ومناسبات</h3>
+            <p>شارك في الفعاليات الموسمية والمناسبات الوطنية المميزة.</p>
+          </div>
+        </div>
+        <button class="section-top-btn" data-section="experiences">العودة للأعلى</button>
+      </div>
+    </section>
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="features-container">
+        <h2 class="features-title">مميزاتنا</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              🗺️
+            </div>
+            <h3>دليل شامل</h3>
+            <p>اكتشف جميع المدن السعودية مع معلومات تفصيلية عن كل مدينة</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              🏨
+            </div>
+            <h3>حجز الفنادق</h3>
+            <p>احجز فندقك المفضل بسهولة مع أفضل العروض والخصومات</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              👨‍💼
+            </div>
+            <h3>مرشدين سياحيين</h3>
+            <p>استفد من خبرة المرشدين السياحيين المحترفين</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              📅
+            </div>
+            <h3>الفعاليات</h3>
+            <p>كن على اطلاع دائم بأهم الفعاليات والمناسبات في كل مدينة</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              📸
+            </div>
+            <h3>معرض الصور</h3>
+            <p>استمتع بمجموعة رائعة من الصور لأجمل المعالم السياحية</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              🎧
+            </div>
+            <h3>دعم فني</h3>
+            <p>خدمة عملاء متاحة على مدار الساعة لمساعدتك</p>
+          </div>
+        </div>
+        <button class="section-top-btn" data-section="features">العودة للأعلى</button>
+      </div>
+    </section>
+    <!-- Technical Section -->
+    <section id="technical" class="features-section">
+      <div class="features-container">
+        <h2 class="features-title">التقنية</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>ذكاء اصطناعي متقدم</h3>
+            <p>نستخدم أحدث تقنيات الذكاء الاصطناعي لتخصيص تجربة السفر وتقديم
+              اقتراحات ذكية.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🕶️</div>
+            <h3>واقع افتراضي ومعزز</h3>
+            <p>استمتع بجولات افتراضية وتفاعلية للمدن والمعالم السياحية قبل
+              زيارتها فعلياً.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>أمان وخصوصية</h3>
+            <p>نضمن حماية بياناتك وخصوصيتك باستخدام أحدث بروتوكولات الأمان.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>أداء سريع</h3>
+            <p>تجربة تصفح سلسة وسريعة على جميع الأجهزة بفضل تقنيات الويب
+              الحديثة.</p>
+          </div>
+        </div>
+        <button class="section-top-btn" data-section="technical">العودة للأعلى</button>
+      </div>
+    </section>
+    <!-- City Grid Section -->
+    <div id="heroCityGrid" style="display:none;">
+      <div class="city-flex-container">
+        <div class="city-grid" id="cityGridHero">
+          <div class="city-card-container">
+            <div class="city-card" data-city="...">
+              <img class="city-card-img" src="..." alt="...">
+              <div class="city-card-title">اسم المدينة</div>
+            </div>
+          </div>
+        </div>
+        <div id="cityDetailsHero" style="min-width:350px; margin-right:2rem;"></div>
+      </div>
+    </div>
+    <section id="contact" class="contact-section"
+      style="padding: 3rem 0; background: #fffbe9; text-align: center;">
+      <div class="contact-container">
+        <h2 style="color:#b97a00; font-size:2rem; margin-bottom:1.2rem;">تواصل
+          معنا</h2>
+        <p style="color:#4b2e13; font-size:1.1rem; margin-bottom:1.5rem;">لأي
+          استفسار أو اقتراح، يمكنك التواصل معنا عبر البريد الإلكتروني أو النموذج
+          أدناه.</p>
+        <form class="contact-form"
+          style="max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;">
+          <input type="text" placeholder="الاسم" required
+            style="padding:1rem;border-radius:8px;border:1px solid #eee;">
+          <input type="email" placeholder="البريد الإلكتروني" required
+            style="padding:1rem;border-radius:8px;border:1px solid #eee;">
+          <textarea placeholder="رسالتك" required
+            style="padding:1rem;border-radius:8px;border:1px solid #eee;min-height:120px;"></textarea>
+          <button type="submit" class="cta-button"
+            style="width:fit-content;margin:0 auto;">إرسال</button>
+        </form>
+        <button class="section-top-btn" data-section="contact">العودة للأعلى</button>
+      </div>
+    </section>
+    <footer>
+      <div class="footer-content">
+        <span>© 2025 سفار. جميع الحقوق محفوظة.</span>
+        <span>
+          <a href="#" style="margin-left: 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+            </svg>
+          </a>
+          <a href="#" style="margin-right: 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </footer>
+    <button class="back-to-top" aria-label="العودة للأعلى">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </button>
+    <div class="menu-overlay"></div>
+    <script src="script.js"></script>
+    <script>
+      // Dark mode toggle
+      const darkToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+      if (darkToggle) {
+        darkToggle.onclick = function() {
+          body.classList.toggle('dark');
+          if (body.classList.contains('dark')) {
+            darkToggle.textContent = 'وضع النهار';
+          } else {
+            darkToggle.textContent = 'الوضع الليلي';
+          }
+        };
+      }
+
+      // Mobile menu functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const headerNav = document.querySelector('.header-nav');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuClose = document.querySelector('.menu-close');
+        const body = document.body;
+
+        if (menuToggle && headerNav && menuOverlay) {
+          menuToggle.addEventListener('click', function() {
+            headerNav.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            body.style.overflow = headerNav.classList.contains('active') ? 'hidden' : '';
+          });
+
+          menuOverlay.addEventListener('click', function() {
+            headerNav.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            body.style.overflow = '';
+          });
+
+          if (menuClose) {
+            menuClose.addEventListener('click', function() {
+              headerNav.classList.remove('active');
+              menuOverlay.classList.remove('active');
+              menuToggle.classList.remove('active');
+              body.style.overflow = '';
+            });
+          }
+
+          // Close menu when clicking on a link
+          const navLinks = headerNav.querySelectorAll('.header-link');
+          navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              headerNav.classList.remove('active');
+              menuOverlay.classList.remove('active');
+              menuToggle.classList.remove('active');
+              body.style.overflow = '';
+            });
+          });
+        }
+      });
+    </script>
+    <script>
+      // Always scroll to top on page load (especially for mobile)
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          window.scrollTo(0, 0);
+        }, 0);
+      });
+
+      // Back to top button functionality
+      const backToTop = document.querySelector('.back-to-top');
+      if (backToTop) {
+        // Show button immediately on mobile
+        if (window.innerWidth <= 768) {
+          backToTop.classList.add('show');
+        }
+
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 100) { // Reduced threshold for better visibility
+            backToTop.classList.add('show');
+          } else {
+            if (window.innerWidth > 768) { // Only hide on desktop
+              backToTop.classList.remove('show');
+            }
+          }
+        });
+
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    </script>
+    <script>
+      // Section back to top buttons functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const sectionButtons = document.querySelectorAll('.section-top-btn');
+        
+        sectionButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const header = document.querySelector('.main-header');
+            if (header) {
+              header.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const startTourBtn = document.getElementById('startVirtualTour');
+      const citiesModal = document.getElementById('citiesModal');
+      const closeModal = document.querySelector('.close-modal');
+      const cityOptions = document.querySelectorAll('.city-option');
+      const revealCitiesBtn = document.getElementById('revealCitiesBtn');
+
+      // Remove the old event listener since we're using a direct link now
+      // startTourBtn.addEventListener('click', function() {
+      //   citiesModal.style.display = 'block';
+      //   revealCitiesBtn.style.display = 'none';
+      // });
+
+      closeModal.addEventListener('click', function() {
+        citiesModal.style.display = 'none';
+        revealCitiesBtn.style.display = 'block';
+      });
+
+      window.addEventListener('click', function(event) {
+        if (event.target === citiesModal) {
+          citiesModal.style.display = 'none';
+          revealCitiesBtn.style.display = 'block'; // Show the button when clicking outside modal
+        }
+      });
+
+      cityOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const cityName = this.getAttribute('data-city');
+          window.location.href = `city-details.html?city=${encodeURIComponent(cityName)}#planSection`;
+        });
+      });
+    });
+    </script>
+  </body>
+</html>

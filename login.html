@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - سفار</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Cairo:wght@700&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .login-container {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      }
+      .login-title {
+        text-align: center;
+        color: #b97a00;
+        margin-bottom: 2rem;
+      }
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .login-form input {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      .login-form button {
+        padding: 1rem;
+        background: #b97a00;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+      .login-form button:hover {
+        background: #a36b00;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        color: #b97a00;
+        text-decoration: none;
+      }
+      .user-type {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: #f5f5f5;
+        border-radius: 8px;
+      }
+      .user-type label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+      .guider-fields {
+        display: none;
+      }
+      .guider-fields.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2 class="login-title">تسجيل الدخول</h2>
+      <form class="login-form">
+        <div class="user-type">
+          <label>
+            <input type="radio" name="userType" value="user" checked>
+            مستخدم عادي
+          </label>
+          <label>
+            <input type="radio" name="userType" value="guider">
+            مرشد سياحي
+          </label>
+        </div>
+        
+        <input type="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" placeholder="كلمة المرور" required>
+        
+        <div class="guider-fields">
+          <input type="text" placeholder="رقم الرخصة السياحية" required>
+          <input type="text" placeholder="رقم الهوية" required>
+        </div>
+        
+        <button type="submit">تسجيل الدخول</button>
+      </form>
+      <a href="index.html" class="back-link">العودة للصفحة الرئيسية</a>
+    </div>
+
+    <script>
+      document.querySelectorAll('input[name="userType"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          const guiderFields = document.querySelector('.guider-fields');
+          if (this.value === 'guider') {
+            guiderFields.classList.add('show');
+            guiderFields.querySelectorAll('input').forEach(input => {
+              input.required = true;
+            });
+          } else {
+            guiderFields.classList.remove('show');
+            guiderFields.querySelectorAll('input').forEach(input => {
+              input.required = false;
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html> 

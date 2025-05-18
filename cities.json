@@ -1,0 +1,590 @@
+[
+  {
+    "name": "جدة",
+    "image": "image/jeddah/pexels-dalya-al-2151416-4614473.jpg",
+    "desc": "عروس البحر الأحمر، مدينة ساحلية نابضة بالحياة والثقافة.",
+    "population": "4.5M",
+    "event": "Jeddah Season: The biggest entertainment and cultural festival in the city!",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك جدة",
+        "rating": "5 نجوم",
+        "location": "كورنيش جدة",
+        "price": "1200 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "صالة ألعاب رياضية", "مطعم", "واي فاي مجاني"],
+        "contact": "012-1234567",
+        "website": "www.movenpick.com/jeddah"
+      },
+      {
+        "name": "فندق هيلتون جدة",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1500 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "صالة ألعاب رياضية", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "012-2345678",
+        "website": "www.hilton.com/jeddah"
+      },
+      {
+        "name": "فندق راديسون بلو جدة",
+        "rating": "4 نجوم",
+        "location": "حي السلامة",
+        "price": "900 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "012-3456789",
+        "website": "www.radissonblu.com/jeddah"
+      }
+    ],
+    "guides": [
+      {
+        "name": "أحمد السديري",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "5 سنوات",
+        "specialties": ["التراث", "المعالم التاريخية", "المطاعم المحلية"],
+        "contact": "055-1234567",
+        "email": "ahmed@guide.com",
+        "price": "500 ريال/يوم"
+      },
+      {
+        "name": "سارة القحطاني",
+        "languages": ["العربية", "الفرنسية"],
+        "experience": "3 سنوات",
+        "specialties": ["التسوق", "المتاحف", "الفنون"],
+        "contact": "055-2345678",
+        "email": "sarah@guide.com",
+        "price": "400 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "مكة المكرمة",
+    "image": "image/mecca/AJA_P_5611-07.webp",
+    "desc": "أقدس مدينة في الإسلام، مقصد ملايين الحجاج سنوياً.",
+    "population": "2M",
+    "event": "",
+    "hotels": [
+      {
+        "name": "فندق مكة هيلتون",
+        "rating": "5 نجوم",
+        "location": "قرب الحرم المكي",
+        "price": "2000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات", "خدمة نقل للمسجد الحرام"],
+        "contact": "012-4567890",
+        "website": "www.hilton.com/makkah"
+      },
+      {
+        "name": "فندق دار التوحيد إنتركونتيننتال",
+        "rating": "5 نجوم",
+        "location": "قرب الحرم المكي",
+        "price": "2500 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "خدمة نقل للمسجد الحرام"],
+        "contact": "012-5678901",
+        "website": "www.ihg.com/makkah"
+      }
+    ],
+    "guides": [
+      {
+        "name": "محمد العتيبي",
+        "languages": ["العربية", "الإنجليزية", "الأردية"],
+        "experience": "8 سنوات",
+        "specialties": ["المناسك", "المعالم الدينية", "التاريخ الإسلامي"],
+        "contact": "055-3456789",
+        "email": "mohammed@guide.com",
+        "price": "600 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "الرياض",
+    "image": "image/Riyadh/Riyadh.jpg",
+    "desc": "عاصمة المملكة العربية السعودية، مركز الأعمال والتطور.",
+    "population": "7.6M",
+    "event": "",
+    "hotels": [
+      {
+        "name": "فندق الفورسيزونز الرياض",
+        "rating": "5 نجوم",
+        "location": "حي الملك فهد",
+        "price": "1800 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "صالة ألعاب رياضية", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "011-1234567",
+        "website": "www.fourseasons.com/riyadh"
+      },
+      {
+        "name": "فندق الريتز كارلتون الرياض",
+        "rating": "5 نجوم",
+        "location": "حي العليا",
+        "price": "2000 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "صالة ألعاب رياضية", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "011-2345678",
+        "website": "www.ritzcarlton.com/riyadh"
+      }
+    ],
+    "guides": [
+      {
+        "name": "خالد الدوسري",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "6 سنوات",
+        "specialties": ["الأعمال", "المتاحف", "المعالم الحديثة"],
+        "contact": "055-4567890",
+        "email": "khaled@guide.com",
+        "price": "550 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "الخبر",
+    "image": "image/al khobar/62977.jpg",
+    "desc": "مدينة ساحلية عصرية على الخليج العربي.",
+    "population": "0.5M",
+    "event": "",
+    "hotels": [
+      {
+        "name": "فندق شيراتون الدمام",
+        "rating": "5 نجوم",
+        "location": "كورنيش الخبر",
+        "price": "1300 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "013-1234567",
+        "website": "www.sheraton.com/khobar"
+      },
+      {
+        "name": "فندق موفنبيك الخبر",
+        "rating": "4 نجوم",
+        "location": "وسط المدينة",
+        "price": "1000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "013-2345678",
+        "website": "www.movenpick.com/khobar"
+      }
+    ],
+    "guides": [
+      {
+        "name": "ناصر الخالدي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "4 سنوات",
+        "specialties": ["الشواطئ", "المطاعم", "التسوق"],
+        "contact": "055-5678901",
+        "email": "nasser@guide.com",
+        "price": "450 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "العلا",
+    "image": "image/al ula/1968706-486009869.jpg",
+    "desc": "مدينة تاريخية تشتهر بآثارها ومناظرها الطبيعية الخلابة.",
+    "population": "0.05M",
+    "event": "",
+    "hotels": [
+      {
+        "name": "فندق حابيت العلا",
+        "rating": "5 نجوم",
+        "location": "وسط العلا",
+        "price": "2500 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات", "رحلات سفاري"],
+        "contact": "014-1234567",
+        "website": "www.habitas.com/alula"
+      },
+      {
+        "name": "منتجع شادن العلا",
+        "rating": "4 نجوم",
+        "location": "وادي العلا",
+        "price": "1800 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات", "رحلات سفاري"],
+        "contact": "014-2345678",
+        "website": "www.shaden.com/alula"
+      }
+    ],
+    "guides": [
+      {
+        "name": "عبدالله العلاوي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "7 سنوات",
+        "specialties": ["الآثار", "التاريخ", "الطبيعة"],
+        "contact": "055-6789012",
+        "email": "abdullah@guide.com",
+        "price": "700 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "الدمام",
+    "image": "image/dammam/dammam_corniche_view.jpg",
+    "desc": "مدينة ساحلية على الخليج العربي، مركز تجاري وثقافي مهم.",
+    "population": "1.2M",
+    "event": "مهرجان الدمام للتراث",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك الدمام",
+        "rating": "5 نجوم",
+        "location": "كورنيش الدمام",
+        "price": "1400 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "013-3456789",
+        "website": "www.movenpick.com/dammam"
+      },
+      {
+        "name": "فندق نوفوتيل الدمام",
+        "rating": "4 نجوم",
+        "location": "وسط المدينة",
+        "price": "1100 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "013-4567890",
+        "website": "www.novotel.com/dammam"
+      }
+    ],
+    "guides": [
+      {
+        "name": "فهد الشمري",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "5 سنوات",
+        "specialties": ["الشواطئ", "المتاحف", "التسوق"],
+        "contact": "055-7890123",
+        "email": "fahad@guide.com",
+        "price": "500 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "الطائف",
+    "image": "image/taif/Untitled.jpg",
+    "desc": "مدينة جبلية تتميز بمناخها المعتدل وحدائقها الخضراء.",
+    "population": "0.7M",
+    "event": "مهرجان الورد الطائفي",
+    "hotels": [
+      {
+        "name": "فندق إنتركونتيننتال الطائف",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1600 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "012-6789012",
+        "website": "www.ihg.com/taif"
+      },
+      {
+        "name": "فندق راديسون بلو الطائف",
+        "rating": "4 نجوم",
+        "location": "حي الشفا",
+        "price": "1200 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "012-7890123",
+        "website": "www.radissonblu.com/taif"
+      }
+    ],
+    "guides": [
+      {
+        "name": "سعد الغامدي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "4 سنوات",
+        "specialties": ["الحدائق", "الأسواق", "التراث"],
+        "contact": "055-8901234",
+        "email": "saad@guide.com",
+        "price": "450 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "أبها",
+    "image": "image/abha/images.jpg",
+    "desc": "مدينة جبلية في منطقة عسير، تشتهر بمناظرها الطبيعية الخلابة.",
+    "population": "0.4M",
+    "event": "مهرجان أبها للسياحة",
+    "hotels": [
+      {
+        "name": "فندق هيلتون أبها",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1500 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-1234567",
+        "website": "www.hilton.com/abha"
+      },
+      {
+        "name": "فندق قصر أبها",
+        "rating": "4 نجوم",
+        "location": "حي المفتاحة",
+        "price": "1100 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-2345678",
+        "website": "www.qasr-abha.com"
+      }
+    ],
+    "guides": [
+      {
+        "name": "عبدالرحمن العسيري",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "5 سنوات",
+        "specialties": ["الجبال", "التراث", "الفنون"],
+        "contact": "055-9012345",
+        "email": "abdulrahman@guide.com",
+        "price": "500 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "ينبع",
+    "image": "image/yanbu/3224826-159324220.jpg",
+    "desc": "مدينة ساحلية على البحر الأحمر، تشتهر بشواطئها الجميلة.",
+    "population": "0.3M",
+    "event": "مهرجان ينبع البحري",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك ينبع",
+        "rating": "5 نجوم",
+        "location": "كورنيش ينبع",
+        "price": "1300 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "014-3456789",
+        "website": "www.movenpick.com/yanbu"
+      },
+      {
+        "name": "فندق راديسون بلو ينبع",
+        "rating": "4 نجوم",
+        "location": "وسط المدينة",
+        "price": "1000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "014-4567890",
+        "website": "www.radissonblu.com/yanbu"
+      }
+    ],
+    "guides": [
+      {
+        "name": "محمد الينبعاوي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "3 سنوات",
+        "specialties": ["الشواطئ", "الغوص", "المأكولات البحرية"],
+        "contact": "055-0123456",
+        "email": "mohammed@guide.com",
+        "price": "400 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "تبوك",
+    "image": "image/tabuk/images.jpg",
+    "desc": "مدينة تاريخية في شمال المملكة، تشتهر بآثارها القديمة.",
+    "population": "0.6M",
+    "event": "مهرجان تبوك للتراث",
+    "hotels": [
+      {
+        "name": "فندق هيلتون تبوك",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1400 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "014-5678901",
+        "website": "www.hilton.com/tabuk"
+      },
+      {
+        "name": "فندق موفنبيك تبوك",
+        "rating": "4 نجوم",
+        "location": "حي العزيزية",
+        "price": "1100 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "014-6789012",
+        "website": "www.movenpick.com/tabuk"
+      }
+    ],
+    "guides": [
+      {
+        "name": "خالد التبوكي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "4 سنوات",
+        "specialties": ["الآثار", "التاريخ", "التراث"],
+        "contact": "055-1234567",
+        "email": "khaled@guide.com",
+        "price": "450 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "حائل",
+    "image": "image/hail/hail-city.jpg",
+    "desc": "مدينة في شمال المملكة، تشتهر بتراثها الثقافي الغني.",
+    "population": "0.4M",
+    "event": "مهرجان حائل للتراث",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك حائل",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1300 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "016-1234567",
+        "website": "www.movenpick.com/hail"
+      },
+      {
+        "name": "فندق راديسون بلو حائل",
+        "rating": "4 نجوم",
+        "location": "حي النقرة",
+        "price": "1000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "016-2345678",
+        "website": "www.radissonblu.com/hail"
+      }
+    ],
+    "guides": [
+      {
+        "name": "عبدالله الحائلي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "5 سنوات",
+        "specialties": ["التراث", "الشعر", "الفنون"],
+        "contact": "055-2345678",
+        "email": "abdullah@guide.com",
+        "price": "500 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "نجران",
+    "image": "image/najran/najran.jpg",
+    "desc": "مدينة في جنوب المملكة، تشتهر بتراثها العريق وقلاعها التاريخية.",
+    "population": "0.5M",
+    "event": "مهرجان نجران للتراث",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك نجران",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1300 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-3456789",
+        "website": "www.movenpick.com/najran"
+      },
+      {
+        "name": "فندق راديسون بلو نجران",
+        "rating": "4 نجوم",
+        "location": "حي الملك فهد",
+        "price": "1000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-4567890",
+        "website": "www.radissonblu.com/najran"
+      }
+    ],
+    "guides": [
+      {
+        "name": "سعد النجراني",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "4 سنوات",
+        "specialties": ["القلاع", "التراث", "التاريخ"],
+        "contact": "055-3456789",
+        "email": "saad@guide.com",
+        "price": "450 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "جازان",
+    "image": "image/jazan/discover-jazan-abha-2.jpg",
+    "desc": "مدينة ساحلية في جنوب المملكة، تشتهر بمنتجاتها الزراعية.",
+    "population": "0.4M",
+    "event": "مهرجان جازان للمانجو",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك جازان",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1300 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-5678901",
+        "website": "www.movenpick.com/jazan"
+      },
+      {
+        "name": "فندق راديسون بلو جازان",
+        "rating": "4 نجوم",
+        "location": "حي الكورنيش",
+        "price": "1000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-6789012",
+        "website": "www.radissonblu.com/jazan"
+      }
+    ],
+    "guides": [
+      {
+        "name": "أحمد الجازاني",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "3 سنوات",
+        "specialties": ["الزراعة", "المأكولات المحلية", "التراث"],
+        "contact": "055-4567890",
+        "email": "ahmed@guide.com",
+        "price": "400 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "الباحة",
+    "image": "image/baha/cable-car.jpg",
+    "desc": "مدينة جبلية في منطقة الباحة، تشتهر بمناظرها الطبيعية الخلابة.",
+    "population": "0.3M",
+    "event": "مهرجان الباحة للسياحة",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك الباحة",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1300 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-7890123",
+        "website": "www.movenpick.com/baha"
+      },
+      {
+        "name": "فندق راديسون بلو الباحة",
+        "rating": "4 نجوم",
+        "location": "حي الشفا",
+        "price": "1000 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-8901234",
+        "website": "www.radissonblu.com/baha"
+      }
+    ],
+    "guides": [
+      {
+        "name": "محمد الباحي",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "4 سنوات",
+        "specialties": ["الجبال", "المناظر الطبيعية", "التراث"],
+        "contact": "055-5678901",
+        "email": "mohammed@guide.com",
+        "price": "450 ريال/يوم"
+      }
+    ]
+  },
+  {
+    "name": "عرعر",
+    "image": "image/arar/arar-saudi-arabien-wasserturm-01.jpg",
+    "desc": "مدينة في شمال المملكة، تشتهر بتراثها البدوي.",
+    "population": "0.2M",
+    "event": "مهرجان عرعر للتراث",
+    "hotels": [
+      {
+        "name": "فندق موفنبيك عرعر",
+        "rating": "5 نجوم",
+        "location": "وسط المدينة",
+        "price": "1200 ريال/ليلة",
+        "amenities": ["مسبح", "سبا", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-9012345",
+        "website": "www.movenpick.com/arar"
+      },
+      {
+        "name": "فندق راديسون بلو عرعر",
+        "rating": "4 نجوم",
+        "location": "حي الملك فهد",
+        "price": "900 ريال/ليلة",
+        "amenities": ["مسبح", "مطعم", "واي فاي مجاني", "موقف سيارات"],
+        "contact": "017-0123456",
+        "website": "www.radissonblu.com/arar"
+      }
+    ],
+    "guides": [
+      {
+        "name": "عبدالعزيز العريري",
+        "languages": ["العربية", "الإنجليزية"],
+        "experience": "3 سنوات",
+        "specialties": ["التراث البدوي", "الفنون الشعبية", "التاريخ"],
+        "contact": "055-6789012",
+        "email": "abdulaziz@guide.com",
+        "price": "400 ريال/يوم"
+      }
+    ]
+  }
+] 

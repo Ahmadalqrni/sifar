@@ -1,0 +1,688 @@
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول رحلتك - سفار</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .schedule-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .schedule-header h1 {
+            color: #b97a00;
+            font-size: 2.5em;
+            margin-bottom: 1rem;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .schedule-header p {
+            color: #4b2e13;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-form {
+            background: linear-gradient(135deg, #fffbe9 0%, #fff5d6 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4b2e13;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #b97a00;
+            outline: none;
+        }
+
+        .schedule-preview {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+
+        .day-schedule {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .day-header {
+            color: #b97a00;
+            font-size: 1.3em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+        }
+
+        .activity-time {
+            background: #b97a00;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-left: 1rem;
+            font-weight: bold;
+        }
+
+        .activity-details {
+            flex-grow: 1;
+        }
+
+        .activity-title {
+            color: #4b2e13;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .schedule-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Dark mode support */
+        body.dark .schedule-header h1 {
+            color: #ffd700;
+        }
+
+        body.dark .schedule-header p {
+            color: #fff;
+        }
+
+        body.dark .schedule-form {
+            background: linear-gradient(135deg, #4b2e13 0%, #2c1b0c 100%);
+        }
+
+        body.dark .form-group label {
+            color: #ffd700;
+        }
+
+        body.dark .form-control {
+            background: #2c1b0c;
+            border-color: #4b2e13;
+            color: #fff;
+        }
+
+        body.dark .form-control:focus {
+            border-color: #ffd700;
+        }
+
+        body.dark .schedule-preview {
+            background: #2c1b0c;
+        }
+
+        body.dark .day-schedule {
+            border-color: #4b2e13;
+        }
+
+        body.dark .day-header {
+            color: #ffd700;
+            border-bottom-color: #4b2e13;
+        }
+
+        body.dark .activity-item {
+            background: #1a1a1a;
+        }
+
+        body.dark .activity-title {
+            color: #ffd700;
+        }
+
+        body.dark .activity-description {
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .schedule-container {
+                padding: 1rem;
+            }
+
+            .schedule-header h1 {
+                font-size: 2em;
+            }
+
+            .schedule-form {
+                padding: 1.5rem;
+            }
+
+            .activity-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .activity-time {
+                margin: 0 0 0.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-header h1 {
+                font-size: 1.8em;
+            }
+
+            .schedule-form {
+                padding: 1rem;
+            }
+
+            .schedule-actions {
+                flex-direction: column;
+            }
+
+            .schedule-actions .cta-button {
+                width: 100%;
+            }
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .interest-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .interest-option:hover {
+            border-color: #b97a00;
+            background: #fffbe9;
+        }
+
+        .interest-option input[type="checkbox"] {
+            margin-left: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .schedule-preview {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+
+        .day-schedule {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #fffbe9;
+        }
+
+        .day-header {
+            color: #b97a00;
+            font-size: 1.3em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-header::before {
+            content: "📅";
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .activity-item:hover {
+            transform: translateX(-5px);
+        }
+
+        .activity-time {
+            background: #b97a00;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-left: 1rem;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .activity-details {
+            flex-grow: 1;
+        }
+
+        .activity-title {
+            color: #4b2e13;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Dark mode support */
+        body.dark .interest-option {
+            background: #2c1b0c;
+            border-color: #4b2e13;
+            color: #ffd700;
+        }
+
+        body.dark .interest-option:hover {
+            border-color: #ffd700;
+            background: #4b2e13;
+        }
+
+        body.dark .day-schedule {
+            background: #2c1b0c;
+            border-color: #4b2e13;
+        }
+
+        body.dark .activity-item {
+            background: #1a1a1a;
+        }
+
+        body.dark .activity-title {
+            color: #ffd700;
+        }
+
+        body.dark .activity-description {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="header-logo">
+                <img src="image/icon website.jpg" alt="شعار سفار" class="logo-img" />
+            </a>
+            <nav class="header-nav">
+                <a href="index.html" class="header-link">الرئيسية</a>
+            </nav>
+            <div class="header-actions">
+                <button id="darkModeToggle" class="cta-button">الوضع الليلي</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="schedule-container">
+        <div class="schedule-header">
+            <h1>جدول رحلتك</h1>
+            <p>قم بتخطيط رحلتك بشكل مثالي مع جدول زمني مخصص يناسب اهتماماتك وميزانيتك</p>
+        </div>
+
+        <div class="schedule-form">
+            <div class="form-group">
+                <label for="city">المدينة</label>
+                <select id="city" class="form-control" onchange="updateSchedule()">
+                    <option value="">اختر المدينة</option>
+                    <option value="جدة">جدة</option>
+                    <option value="الرياض">الرياض</option>
+                    <option value="مكة المكرمة">مكة المكرمة</option>
+                    <option value="المدينة المنورة">المدينة المنورة</option>
+                    <option value="الطائف">الطائف</option>
+                    <option value="الدمام">الدمام</option>
+                    <option value="أبها">أبها</option>
+                    <option value="العلا">العلا</option>
+                    <option value="تبوك">تبوك</option>
+                    <option value="الخبر">الخبر</option>
+                    <option value="ينبع">ينبع</option>
+                    <option value="حائل">حائل</option>
+                    <option value="جازان">جازان</option>
+                    <option value="نجران">نجران</option>
+                    <option value="عرعر">عرعر</option>
+                    <option value="الباحة">الباحة</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">مدة الرحلة (بالأيام)</label>
+                <input type="number" id="duration" class="form-control" min="1" max="30" placeholder="عدد الأيام" onchange="updateSchedule()">
+            </div>
+
+            <div class="form-group">
+                <label for="budget">الميزانية (بالريال)</label>
+                <input type="number" id="budget" class="form-control" placeholder="الميزانية" onchange="updateSchedule()">
+            </div>
+
+            <div class="form-group">
+                <label>الاهتمامات</label>
+                <div class="interests-grid">
+                    <label class="interest-option">
+                        <input type="checkbox" name="interests" value="المعالم التاريخية" onchange="updateSchedule()">
+                        المعالم التاريخية
+                    </label>
+                    <label class="interest-option">
+                        <input type="checkbox" name="interests" value="التسوق" onchange="updateSchedule()">
+                        التسوق
+                    </label>
+                    <label class="interest-option">
+                        <input type="checkbox" name="interests" value="المطاعم" onchange="updateSchedule()">
+                        المطاعم
+                    </label>
+                    <label class="interest-option">
+                        <input type="checkbox" name="interests" value="الأنشطة الترفيهية" onchange="updateSchedule()">
+                        الأنشطة الترفيهية
+                    </label>
+                    <label class="interest-option">
+                        <input type="checkbox" name="interests" value="الثقافة المحلية" onchange="updateSchedule()">
+                        الثقافة المحلية
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="accommodation">نوع الإقامة</label>
+                <select id="accommodation" class="form-control" onchange="updateSchedule()">
+                    <option value="">اختر نوع الإقامة</option>
+                    <option value="فندق فاخر">فندق فاخر</option>
+                    <option value="فندق متوسط">فندق متوسط</option>
+                    <option value="شقة مفروشة">شقة مفروشة</option>
+                    <option value="منتجع">منتجع</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="transportation">وسيلة النقل</label>
+                <select id="transportation" class="form-control">
+                    <option value="">اختر وسيلة النقل</option>
+                    <option value="سيارة خاصة">سيارة خاصة</option>
+                    <option value="مواصلات عامة">مواصلات عامة</option>
+                    <option value="سيارة مع سائق">سيارة مع سائق</option>
+                    <option value="تاكسي">تاكسي</option>
+                </select>
+            </div>
+
+            <div class="schedule-actions">
+                <button class="cta-button" onclick="showSchedule()">عرض الجدول</button>
+            </div>
+        </div>
+
+        <div class="schedule-preview" id="schedulePreview" style="display: none;">
+            <h3>معاينة الجدول</h3>
+            <div class="schedule-content" id="scheduleContent"></div>
+            <div class="schedule-actions">
+                <button class="cta-button" onclick="saveSchedule()">حفظ الجدول</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <span>© 2025 سفار. جميع الحقوق محفوظة.</span>
+            <span>
+                <a href="#" style="margin-left: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    </svg>
+                </a>
+                <a href="#" style="margin-right: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkToggle = document.getElementById('darkModeToggle');
+        if (darkToggle) {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                darkToggle.textContent = 'وضع النهار';
+            }
+            
+            darkToggle.onclick = function() {
+                document.body.classList.toggle('dark');
+                darkToggle.textContent = document.body.classList.contains('dark') ? 'وضع النهار' : 'الوضع الليلي';
+                localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+            };
+        }
+
+        function showSchedule() {
+            const city = document.getElementById('city').value;
+            const duration = document.getElementById('duration').value;
+            const transportation = document.getElementById('transportation').value;
+            const schedulePreview = document.getElementById('schedulePreview');
+            const scheduleContent = document.getElementById('scheduleContent');
+            
+            // Validate required fields
+            if (!city || !duration || !transportation) {
+                alert('الرجاء إكمال جميع الحقول المطلوبة (المدينة، المدة، وسيلة النقل)');
+                return;
+            }
+            
+            // Show the schedule preview
+            schedulePreview.style.display = 'block';
+            
+            // Generate and display the schedule
+            updateSchedule();
+        }
+
+        function updateSchedule() {
+            const city = document.getElementById('city').value;
+            const duration = document.getElementById('duration').value;
+            const budget = document.getElementById('budget').value;
+            const accommodation = document.getElementById('accommodation').value;
+            const transportation = document.getElementById('transportation').value;
+            
+            const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked'))
+                .map(checkbox => checkbox.value);
+
+            const schedulePreview = document.getElementById('schedulePreview');
+            let scheduleHTML = '';
+
+            // Define activities based on interests
+            const activities = {
+                'المعالم التاريخية': [
+                    'زيارة المواقع التاريخية',
+                    'جولة في المتاحف',
+                    'استكشاف القصور القديمة',
+                    'زيارة الأسواق التقليدية'
+                ],
+                'التسوق': [
+                    'زيارة مراكز التسوق الحديثة',
+                    'جولة في الأسواق الشعبية',
+                    'تسوق في المنطقة التجارية',
+                    'زيارة معارض المنتجات المحلية'
+                ],
+                'المطاعم': [
+                    'تناول وجبة في مطعم محلي شهير',
+                    'تجربة المأكولات التقليدية',
+                    'زيارة المطاعم المطلة على البحر',
+                    'تذوق الحلويات المحلية'
+                ],
+                'الأنشطة الترفيهية': [
+                    'زيارة الحدائق العامة',
+                    'ممارسة الرياضات المائية',
+                    'جولة في المنتزهات الترفيهية',
+                    'زيارة مراكز الترفيه العائلية'
+                ],
+                'الثقافة المحلية': [
+                    'زيارة المعارض الفنية',
+                    'حضور فعاليات ثقافية',
+                    'زيارة المراكز الثقافية',
+                    'مشاهدة العروض التراثية'
+                ]
+            };
+
+            // Helper function to shuffle array
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Generate schedule for each day
+            for (let day = 1; day <= duration; day++) {
+                scheduleHTML += `
+                    <div class="day-schedule">
+                        <div class="day-header">اليوم ${day}</div>
+                        <div class="activity-item">
+                            <span class="activity-time">09:00</span>
+                            <div class="activity-details">
+                                <div class="activity-title">وجبة الإفطار</div>
+                                <div class="activity-description">تناول وجبة إفطار في ${accommodation}</div>
+                            </div>
+                        </div>`;
+
+                // Add morning activities
+                const morningActivity = shuffleArray(interests)[0];
+                if (activities[morningActivity]) {
+                    scheduleHTML += `
+                        <div class="activity-item">
+                            <span class="activity-time">10:00</span>
+                            <div class="activity-details">
+                                <div class="activity-title">${activities[morningActivity][0]}</div>
+                                <div class="activity-description">استكشاف ${city} - ${morningActivity}</div>
+                            </div>
+                        </div>`;
+                }
+
+                // Add lunch
+                scheduleHTML += `
+                        <div class="activity-item">
+                            <span class="activity-time">13:00</span>
+                            <div class="activity-details">
+                                <div class="activity-title">وجبة الغداء</div>
+                                <div class="activity-description">تناول وجبة غداء في مطعم محلي</div>
+                            </div>
+                        </div>`;
+
+                // Add afternoon activities
+                const afternoonActivity = shuffleArray(interests)[1];
+                if (activities[afternoonActivity]) {
+                    scheduleHTML += `
+                        <div class="activity-item">
+                            <span class="activity-time">15:00</span>
+                            <div class="activity-details">
+                                <div class="activity-title">${activities[afternoonActivity][1]}</div>
+                                <div class="activity-description">استكشاف ${city} - ${afternoonActivity}</div>
+                            </div>
+                        </div>`;
+                }
+
+                // Add dinner
+                scheduleHTML += `
+                        <div class="activity-item">
+                            <span class="activity-time">19:00</span>
+                            <div class="activity-details">
+                                <div class="activity-title">وجبة العشاء</div>
+                                <div class="activity-description">تناول وجبة عشاء في مطعم فاخر</div>
+                            </div>
+                        </div>`;
+
+                // Add evening activities
+                const eveningActivity = shuffleArray(interests)[2];
+                if (activities[eveningActivity]) {
+                    scheduleHTML += `
+                        <div class="activity-item">
+                            <span class="activity-time">20:00</span>
+                            <div class="activity-details">
+                                <div class="activity-title">${activities[eveningActivity][2]}</div>
+                                <div class="activity-description">استكشاف ${city} - ${eveningActivity}</div>
+                            </div>
+                        </div>`;
+                }
+
+                scheduleHTML += `</div>`;
+            }
+
+            // Add tips section
+            const tips = [
+                'ننصح ببدء اليوم مبكراً لاستغلال الوقت بشكل أفضل',
+                'احرص على ارتداء ملابس مريحة ومناسبة للطقس',
+                'لا تنسَ أخذ كاميرا لالتقاط الصور التذكارية',
+                'احتفظ بخريطة المدينة معك دائماً',
+                'تأكد من وجود بطارية احتياطية لهاتفك',
+                'احرص على شرب كميات كافية من الماء'
+            ];
+            const randomTip = tips[Math.floor(Math.random() * tips.length)];
+            
+            scheduleHTML += `
+                <div class="day-schedule">
+                    <div class="day-header">نصائح مفيدة</div>
+                    <div class="activity-item">
+                        <span class="activity-time">💡</span>
+                        <div class="activity-details">
+                            <div class="activity-title">نصيحة اليوم</div>
+                            <div class="activity-description">${randomTip}</div>
+                        </div>
+                    </div>
+                </div>`;
+
+            scheduleContent.innerHTML = scheduleHTML;
+        }
+    </script>
+</body>
+</html> 
